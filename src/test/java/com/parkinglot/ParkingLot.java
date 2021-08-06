@@ -4,6 +4,9 @@ public class ParkingLot {
 
 
     public ParkingTicket park(Car car) {
-        return null;
+//        return null;
+
+
+        return new ParkingTicket();
     }
 }
