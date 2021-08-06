@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -78,5 +81,23 @@ public class ParkingLotTest {
 
         assertEquals(car, firstCar);
         assertNull(secondCar);
+    }
+
+    //Given a parking lot without any position, and a car, when park the car, then return nothing
+    @Test
+    void should_return_nothing_when_park_the_car_given_a_parking_lot_without_position_and_a_car() {
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        int capacity = 10;
+
+        for(int i = 0; i < capacity; i++) {
+            ParkingTicket carParkingTicket = parkingLot.park(car);
+        }
+
+        Car carWithoutPosition = new Car();
+
+        ParkingTicket carWithoutPositionTicket = parkingLot.park(carWithoutPosition);
+
+        assertNull(carWithoutPositionTicket);
     }
 }
