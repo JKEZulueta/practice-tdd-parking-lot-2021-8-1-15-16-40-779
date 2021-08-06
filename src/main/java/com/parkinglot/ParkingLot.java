@@ -5,10 +5,15 @@ import java.util.Map;
 
 public class ParkingLot {
     private final Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
+    public static final int LOT_CAPACITY = 10;
 
 
 
     public ParkingTicket park(Car car) {
+
+        if(LOT_CAPACITY == parkedPosition.size()){
+            return null;
+        }
         ParkingTicket parkingTicket = new ParkingTicket();
         parkedPosition.put(parkingTicket, car);
 
