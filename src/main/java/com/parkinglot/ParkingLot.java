@@ -16,7 +16,12 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        ////Given a parking lot with a parked car, and a parking ticket, when fetch the car twice, then return the right car with each ticket
-        return parkedPosition.get(parkingTicket);
+        if(!parkingTicket.isUsed()){
+            parkingTicket.setUsed();
+            return parkedPosition.get(parkingTicket);
+        }
+        return null;
     }
+
+
 }
