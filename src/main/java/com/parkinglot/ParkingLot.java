@@ -42,5 +42,9 @@ public class ParkingLot {
         return parkedPosition.size() >= LOT_CAPACITY;
     }
 
+    public boolean isParkingFull(){
+        return parkedPosition.size() >= LOT_CAPACITY;
+    }
+
 
 }

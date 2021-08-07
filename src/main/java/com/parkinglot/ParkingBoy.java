@@ -22,6 +22,12 @@ public class ParkingBoy {
 
 
     public ParkingTicket park(Car car) {
+        ParkingLot parkingLot = parkingLots
+                .stream()
+                .reduce((parkingLot1, parkingLot2) -> parkingLot1.isParkingFull() ? parkingLot1 : parkingLot2)
+                .get();
+//        return parkingLot.park(car);
+
         return parkingLot.park(car);
     }
 
