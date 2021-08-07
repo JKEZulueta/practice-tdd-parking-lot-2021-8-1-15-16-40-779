@@ -148,10 +148,8 @@ public class ParkingLotTest {
             ParkingTicket newTicket = parkingLot.park(car);
         }
 
-        Car kyleCar = new Car();
-        ParkingTicket newCar = parkingLot.park(kyleCar);
-
-        Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingLot.fetch(newCar));
+        
+        Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingLot.park(car));
 
         assertEquals("No available position.", exception.getMessage());
 
