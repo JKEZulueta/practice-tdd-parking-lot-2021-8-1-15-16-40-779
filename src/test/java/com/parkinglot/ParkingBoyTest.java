@@ -158,7 +158,7 @@ public class ParkingBoyTest {
 
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
-        assertNull(parkingBoy.getParkingLots().get(1));
+        assertNotNull(parkingBoy.getParkingLots().get(1));
 
     }
 }
