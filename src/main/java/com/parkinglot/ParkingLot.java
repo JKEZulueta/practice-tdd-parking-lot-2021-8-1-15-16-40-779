@@ -24,7 +24,9 @@ public class ParkingLot {
         if(isUnrecognizedTicket(parkingTicket)){
             throw new UnrecognizedParkingTicketException();
         }
-        return null;
+        final Car car = parkedPosition.get(parkingTicket);
+        parkedPosition.remove(parkingTicket);
+        return car;
     }
 
     public boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
