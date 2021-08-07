@@ -185,13 +185,13 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void should_return_nothing_when_parking_boy_fetch_the_car_given_two_parking_lots_and_a_wrong_parking_ticket() {
+    void should_return_exception_when_parking_boy_fetch_the_car_given_two_parking_lots_and_a_wrong_parking_ticket() {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot());
         parkingLots.add(new ParkingLot());
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         ParkingTicket wrongParkingTicket = new ParkingTicket();
-        
+
 
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(wrongParkingTicket));
 
@@ -200,4 +200,5 @@ public class ParkingBoyTest {
 
 
     }
+
 }
