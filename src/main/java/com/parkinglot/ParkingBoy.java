@@ -1,10 +1,7 @@
 package com.parkinglot;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ParkingBoy {
     private final Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
@@ -32,7 +29,15 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLot.fetch(parkingTicket);
+        ParkingLot parkingLot = parkingLots
+                .stream()
+                .reduce(null, (parkingLot1, parkingLot2) ->
+                        parkingLot2.getCars().containsKey(parkingTicket) ? parkingLot2 : parkingLot1);
+//        return parkingLot.fetch(parkingTicket);
+        if(!Objects.isNull(parkingLot)) {
+            return parkingLot.fetch(parkingTicket);
+        }
+        throw new UnrecognizedParkingTicketException();
     }
 
     public List<ParkingLot> getParkingLots(){

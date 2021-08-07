@@ -46,5 +46,9 @@ public class ParkingLot {
         return parkedPosition.size() >= LOT_CAPACITY;
     }
 
+    public Map<ParkingTicket, Car> getCars(){
+        return parkedPosition;
+    }
+
 
 }
