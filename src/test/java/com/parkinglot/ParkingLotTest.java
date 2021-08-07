@@ -175,7 +175,7 @@ public class ParkingLotTest {
     void should_return_right_car_with_ticket_when_parking_boy_fetch_car_twice_given_a_parking_lot_with_two_parked_cars_and_two_parking_tickets() {
         //Given
         ParkingLot parkingLot = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car oneCar = new Car();
         Car twoCar = new Car();
 
