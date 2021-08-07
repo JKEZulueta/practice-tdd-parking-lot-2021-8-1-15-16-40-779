@@ -35,12 +35,7 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if(isUnrecognizedTicket(parkingTicket)){
-            throw new UnrecognizedParkingTicketException();
-        }
-        final Car car = parkedPosition.get(parkingTicket);
-        parkedPosition.remove(parkingTicket);
-        return car;
+        return parkingLot.fetch(parkingTicket);
     }
 
     public boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
