@@ -73,8 +73,8 @@ public class ParkingBoyTest {
 
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Car car = new Car();
-        ParkingTicket wrongParkingTicket = parkingLot.park(car);
+
+        ParkingTicket wrongParkingTicket = new ParkingTicket();
 
 
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(wrongParkingTicket));
@@ -89,7 +89,7 @@ public class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car parkedCar = new Car();
-        ParkingTicket parkingTicket = parkingLot.park(parkedCar);
+        ParkingTicket parkingTicket = parkingBoy.park(parkedCar);
 
 
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(parkingTicket));
