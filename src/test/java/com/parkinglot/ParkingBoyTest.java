@@ -201,4 +201,22 @@ public class ParkingBoyTest {
 
     }
 
+    @Test
+    void should_return_exception_when_parking_boy_fetch_car_given_two_parking_lot_and_two_parking_tickets() {
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot());
+        parkingLots.add(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        parkingBoy.fetch(parkingTicket);
+
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(parkingTicket));
+
+
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
+
+
+    }
 }
