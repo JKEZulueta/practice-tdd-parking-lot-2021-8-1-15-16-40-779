@@ -131,12 +131,32 @@ public class ParkingLotTest {
 
         ParkingTicket ticketNumberOne = parkingLot.park(car);
         parkingLot.fetch(ticketNumberOne);
-        
+
 
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(ticketNumberOne));
 
 
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
+
+    }
+
+    //Given a parking lot without any position, and a car, When park the car, Then return nothing with error message "No available position."
+    @Test
+    void should_return_nothing_with_error_message_when_park_the_car_given_a_parking_lot_without_any_position() {
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        int capacity = 10;
+
+        for(int i = 0; i < capacity; i++){
+            ParkingTicket newTicket = parkingLot.park(car);
+        }
+
+        Car kyleCar = new Car();
+        ParkingTicket newCar = parkingLot.park(kyleCar);
+
+        Exception exception = assertThrows(NoAvailableParkingSlot.class, () -> parkingLot.fetch(newCar));
+
+        assertEquals("No available position.", exception.getMessage());
 
     }
 }

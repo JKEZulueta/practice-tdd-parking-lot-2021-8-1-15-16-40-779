@@ -33,5 +33,10 @@ public class ParkingLot {
         return !parkedPosition.containsKey(parkingTicket);
     }
 
+    public void isFullParkingLot() {
+
+
+    }
+
 
 }
