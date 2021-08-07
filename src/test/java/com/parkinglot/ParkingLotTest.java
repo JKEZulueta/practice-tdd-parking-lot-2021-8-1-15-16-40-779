@@ -61,10 +61,15 @@ public class ParkingLotTest {
     void should_return_nothing_when_fetch_the_car_given_a_parking_lot_and_a_wrong_parking_ticket() {
         ParkingLot parkingLot = new ParkingLot();
         ParkingTicket wrongParkingTicket = new ParkingTicket();
+        Car car = new Car();
 
-        Car wrongTicketCar = parkingLot.fetch(wrongParkingTicket);
+        ParkingTicket wrongTicket = parkingLot.park(car);
+        Car wrongTicketCar = parkingLot.fetch(wrongTicket);
 
-        assertNull(wrongTicketCar);
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(wrongParkingTicket));
+
+
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
 
