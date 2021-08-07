@@ -219,4 +219,22 @@ public class ParkingBoyTest {
 
 
     }
+
+    @Test
+    void should_return_exception_when_parking_boy_park_the_car_given_two_parking_lots_without_any_position_and_a_car() {
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(0));
+        parkingLots.add(new ParkingLot(0));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car = new Car();
+
+        for(int i = 0; i < 10; i++){
+            ParkingTicket parkingTicket = parkingBoy.park(car);
+        }
+
+        Car carWithoutPosition = new Car();
+
+        Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingBoy.park(carWithoutPosition));
+
+    }
 }

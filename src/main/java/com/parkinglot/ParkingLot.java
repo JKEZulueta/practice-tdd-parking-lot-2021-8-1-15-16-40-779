@@ -8,7 +8,6 @@ public class ParkingLot {
     public static final int LOT_CAPACITY = 10;
 
 
-
     public ParkingTicket park(Car car) {
 
         if(ifFull()){
