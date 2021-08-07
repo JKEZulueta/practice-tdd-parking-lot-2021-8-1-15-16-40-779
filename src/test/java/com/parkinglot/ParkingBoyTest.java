@@ -92,6 +92,8 @@ public class ParkingBoyTest {
         ParkingTicket parkingTicket = parkingBoy.park(parkedCar);
 
 
+        Car expectedCar = parkingBoy.fetch(parkingTicket);
+
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(parkingTicket));
 
 
