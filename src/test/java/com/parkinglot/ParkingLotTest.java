@@ -101,9 +101,9 @@ public class ParkingLotTest {
 
         Car carWithoutPosition = new Car();
 
-        ParkingTicket carWithoutPositionTicket = parkingLot.park(carWithoutPosition);
-        
-        assertNull(carWithoutPositionTicket);
+        Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingLot.park(car));
+
+        assertEquals("No available position.", exception.getMessage());
     }
 
     //
@@ -148,7 +148,7 @@ public class ParkingLotTest {
             ParkingTicket newTicket = parkingLot.park(car);
         }
 
-        
+
         Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingLot.park(car));
 
         assertEquals("No available position.", exception.getMessage());
