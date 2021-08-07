@@ -11,7 +11,7 @@ public class ParkingLot {
 
     public ParkingTicket park(Car car) {
 
-        if(LOT_CAPACITY == parkedPosition.size()){
+        if(isFull()){
             return null;
         }
         ParkingTicket parkingTicket = new ParkingTicket();
@@ -33,9 +33,12 @@ public class ParkingLot {
         return !parkedPosition.containsKey(parkingTicket);
     }
 
-    public void isFullParkingLot() {
+    public boolean isFullParkingLot(ParkingTicket parkingTicket) {
+        return !parkedPosition.containsKey(parkingTicket);
+    }
 
-
+    private boolean isFull() {
+        return parkedPosition.size() >= LOT_CAPACITY;
     }
 
 

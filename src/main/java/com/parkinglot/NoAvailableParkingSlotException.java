@@ -1,6 +1,6 @@
 package com.parkinglot;
 
-public class NoAvailableParkingSlot extends RuntimeException{
+public class NoAvailableParkingSlotException extends RuntimeException{
     @Override
     public String getMessage(){
         return "No available position.";

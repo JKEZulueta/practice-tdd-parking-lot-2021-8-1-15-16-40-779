@@ -2,9 +2,6 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -154,7 +151,7 @@ public class ParkingLotTest {
         Car kyleCar = new Car();
         ParkingTicket newCar = parkingLot.park(kyleCar);
 
-        Exception exception = assertThrows(NoAvailableParkingSlot.class, () -> parkingLot.fetch(newCar));
+        Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingLot.fetch(newCar));
 
         assertEquals("No available position.", exception.getMessage());
 
