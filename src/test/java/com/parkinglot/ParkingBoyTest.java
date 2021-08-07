@@ -108,4 +108,21 @@ public class ParkingBoyTest {
 
 
     }
+
+    @Test
+    void should_return_exception_no_available_position_when_parking_boy_park_the_car_given_a_parking_lot_without_any_position_and_a_car() {
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        int capacity = 10;
+
+        for(int i = 0; i < capacity; i++){
+            ParkingTicket parkingTicket = parkingBoy.park(car);
+        }
+
+        Exception exception = assertThrows(NoAvailableParkingSlotException.class, () -> parkingBoy.park(car));
+
+
+        assertEquals("No available position.", exception.getMessage());
+    }
 }

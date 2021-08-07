@@ -22,14 +22,4 @@ public class ParkingBoy {
         return parkingLot.fetch(parkingTicket);
     }
 
-    public boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
-        return !parkedPosition.containsKey(parkingTicket);
-    }
-
-
-    private boolean ifFull() {
-        return parkedPosition.size() >= LOT_CAPACITY;
-    }
-
-
 }
