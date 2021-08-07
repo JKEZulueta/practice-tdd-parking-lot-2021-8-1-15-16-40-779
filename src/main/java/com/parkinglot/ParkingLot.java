@@ -21,11 +21,14 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if(!parkingTicket.isUsed()){
-            parkingTicket.setUsed();
-            return parkedPosition.get(parkingTicket);
+        if(isUnrecognizedTicket(parkingTicket)){
+            throw new UnrecognizedParkingTicketException();
         }
         return null;
+    }
+
+    public boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
+        return !parkedPosition.containsKey(parkingTicket);
     }
 
 
