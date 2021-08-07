@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ParkingBoy {
+public class ParkingBoy{
     private final Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
     public static final int LOT_CAPACITY = 10;
     private ParkingLot parkingLot;
@@ -35,7 +35,12 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLot.fetch(parkingTicket);
+        if (isUnrecognizedTicket(parkingTicket)){
+            throw new UnrecognizedParkingTicketException();
+        } else {
+
+            return parkingLot.fetch(parkingTicket);
+        }
     }
 
     public boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
